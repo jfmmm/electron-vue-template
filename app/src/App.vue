@@ -19,7 +19,7 @@
       );
     background-position: center;
     display: flex;
-    font-family: Lato, Helvetica, sans-serif;
+    font-family: Helvetica, sans-serif;
     justify-content: center;
     text-align: center;
   }

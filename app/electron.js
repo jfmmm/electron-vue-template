@@ -1,9 +1,8 @@
 'use strict'
 
-const electron = require('electron')
+const { app, BrowserWindow } = require('electron')
 const path = require('path')
-const app = electron.app
-const BrowserWindow = electron.BrowserWindow
+const Settings = require('./settings.js')
 
 let mainWindow
 let config = {}
@@ -16,7 +15,9 @@ if (process.env.NODE_ENV === 'development') {
   config.url = `file://${__dirname}/dist/index.html`
 }
 
-function createWindow () {
+app.on('ready', () => {
+  Settings.init();
+
   /**
    * Initial window options
    */
@@ -29,12 +30,8 @@ function createWindow () {
 
   if (process.env.NODE_ENV === 'development') {
     BrowserWindow.addDevToolsExtension(path.join(__dirname, '../node_modules/devtron'))
-
-    let installExtension = require('electron-devtools-installer')
-
-    installExtension.default(installExtension.VUEJS_DEVTOOLS)
-      .then((name) => mainWindow.webContents.openDevTools())
-      .catch((err) => console.log('An error occurred: ', err))
+    require('vue-devtools').install()
+    mainWindow.webContents.openDevTools()
   }
 
   mainWindow.on('closed', () => {
@@ -42,9 +39,7 @@ function createWindow () {
   })
 
   console.log('mainWindow opened')
-}
-
-app.on('ready', createWindow)
+})
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {

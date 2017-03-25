@@ -1,5 +1,7 @@
 <style>
   @import url(https://fonts.googleapis.com/css?family=Lato:300);
+  @import url(~golden-layout/src/css/goldenlayout-base.css);
+  @import url(~golden-layout/src/css/goldenlayout-dark-theme.css);
 
   * {
     margin: 0;
@@ -19,7 +21,7 @@
       );
     background-position: center;
     display: flex;
-    font-family: Helvetica, sans-serif;
+    font-family: Lato, Helvetica, sans-serif;
     justify-content: center;
     text-align: center;
   }

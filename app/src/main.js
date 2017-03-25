@@ -2,9 +2,12 @@ import Vue from 'vue'
 import Electron from 'vue-electron'
 import Resource from 'vue-resource'
 import Router from 'vue-router'
+// import GoldenLayout from 'golden-layout'
 
 import App from './App'
 import routes from './routes'
+
+// console.log(GoldenLayout)
 
 Vue.use(Electron)
 Vue.use(Resource)

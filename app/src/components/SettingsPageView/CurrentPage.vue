@@ -31,6 +31,9 @@
     methods: {
       test: function () {
         console.log('test')
+        // console.log(this.$electron.remote.Menu.getApplicationMenu())
+        console.log(this.$electron.ipcRenderer.sendSync('settings:set', 'key', 'value'))
+        console.log(this.$electron.ipcRenderer.sendSync('settings:get', 'key'))
         this.count++
       }
     }
